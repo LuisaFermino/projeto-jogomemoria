@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #eef9bf;
+}
+
+h1 {
+  text-align: center;
+  color: #75b79e;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 56px;
+}
