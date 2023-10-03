@@ -1,11 +1,10 @@
-let qtdCartas = prompt("Quantas cartas você deseja? (numeros pares de 4 a 14)");
+let qtdCartas = 1;
 
-while (qtdCartas !== "fim") {
-  adicionarPensamento(qtdCartas);
-  qtdCartas = prompt("Quantas cartas você deseja? (numeros pares de 4 a 14)");
+while (qtdCartas < 4 || qtdCartas > 14 || qtdCartas % 2 !== 0 || typeof(qtdCartas)  === "string") {
+  qtdCartas = parseInt(prompt("Quantas cartas você deseja? (numeros pares de 4 a 14)"));
 }
 
-function adicionarPensamento(qtdCartas) {
+function adicionarCartas(qtdCartas) {
   const elemento = document.querySelector(".container-cards");
   elemento.innerHTML =
     elemento.innerHTML +
@@ -13,3 +12,16 @@ function adicionarPensamento(qtdCartas) {
         <div class="front-face">  <img src="./img/front.png" class="img-card" /></div>
     </div>`;
 }
+
+for(let i = 0; i < qtdCartas ;i++){
+  adicionarCartas();
+}
+
+
+// versos = [
+//  img 1
+//  img 2
+//  img 3
+// ]
+
+// versos[i]
