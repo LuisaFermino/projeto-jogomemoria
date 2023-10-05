@@ -35,9 +35,7 @@ h1 {
   height: 20vh;
 }
 
-
 .card {
-  
   border: 2px solid #99cea8;
   width: 11vw;
   aspect-ratio: 3/4;
@@ -71,10 +69,8 @@ h1 {
   backface-visibility: hidden;
 }
 
-.card:hover{
-  transform: rotateY(180deg);
-}
 
 .front{
   transform: rotateY(180deg);
+  align-items: center;
 }
