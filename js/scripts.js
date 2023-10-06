@@ -1,44 +1,52 @@
 let qtdCartas = 1;
+const versosCarta = [
+  `unicornparrot`,
+  `tripletsparrot`,
+  `revertitparrot`,
+  `metalparrot`,
+  `fiestaparrot`,
+  `explodyparrot`,
+  `bobrossparrot`
+]
+const cartasEmJogo = []
 
 while (qtdCartas < 4 || qtdCartas > 14 || qtdCartas % 2 !== 0 || typeof(qtdCartas)  === "string") {
   qtdCartas = parseInt(prompt("Quantas cartas você deseja? (numeros pares de 4 a 14)"));
 }
 
-function adicionarCartas(qtdCartas) {
+function adicionarCartas() {
   const cards = document.querySelector(".container-cards");
-  cards.innerHTML =  cards.innerHTML +`<div class="card" onclick="virarCarta()">
-         <div class="front face"></div>
+  for(let i = 0; i < qtdCartas/2; i++){
+    cartasEmJogo.push(versosCarta[i]);
+    cartasEmJogo.push(versosCarta[i]);
+  }
+
+  cartasEmJogo.sort(comparador);
+
+  for (let i = 0; i < cartasEmJogo.length; i++){
+    cards.innerHTML +=`<div class="card" onclick="virarCarta(this)">
+    <div class="front face"><img src="./img/${cartasEmJogo[i]}.gif" class="img-card"/></div>
       <div class="back face"></div>
-    </div>
-    `
-}
-for(let i = 0; i < qtdCartas/2; i++){
-  adicionarCartas();
- 
-}
-for(let i = 0; i < qtdCartas/2;i++){
-  adicionarCartas();
+    </div>`
+  }
+  console.log(cartasEmJogo);
 }
 
-function virarCarta(){
-  const cards = document.querySelector(".container-cards");
-  const testeVersos = [`<img src="./img/unicornparrot.gif" class="img-card" />`];
-  cards.innerHTML =  cards.innerHTML +`<div class="card">
-      <div class="front face">${testeVersos[0]} </div>
-    </div>
-    `
+function comparador() { 
+	return Math.random() - 0.5; 
 }
 
-// const versosCarta = [
-//   `<img src="./img/unicornparrot.gif" class="img-card" />`,
-//   `<img src="./img/triplestsparrot.gif" class="img-card" />`,
-//   `<img src="./img/revertitparrot.gif" class="img-card" />`,
-//   `<img src="./img/metalparrot.gif" class="img-card" />`,
-//   `<img src="./img/fiestaparrot.gif" class="img-card" />`,
-//   `<img src="./img/explodyparrot.gif" class="img-card" />`,
-//   `<img src="./img/bobrossparrot.gif" class="img-card" />`
+function virarCarta(cartaClicada){
+  cartaClicada.classList.add("front");
 
-// ]
+}
+  
+adicionarCartas();
 
+// tenho que clicar em uma carta - gerenciar jogadas (variavel) 
+// compara as cartas - controlar se estou virando a primeira ou a segunda
+// 1 segundo desvira setimeout
 
-
+// controlar jogadas através da carta que foi virada
+// no caso de cartas iguais elas continuam para cima 
+// dicaaaaaaaaaaaa: cartaClicada.queryselector

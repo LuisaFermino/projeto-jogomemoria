@@ -69,7 +69,6 @@ h1 {
   backface-visibility: hidden;
 }
 
-
 .front{
   transform: rotateY(180deg);
   align-items: center;
