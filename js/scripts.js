@@ -11,7 +11,10 @@ const versosCarta = [
 const cartasEmJogo = []
 const relogio = document.querySelector(".relogio");
 let intervalo = null;
-
+let primeiraCartaVirada;
+let segundaCartaVirada;
+let jogadas = 0;
+let cartasViradas = 0;
 
 while (qtdCartas < 4 || qtdCartas > 14 || qtdCartas % 2 !== 0 || typeof(qtdCartas)  === "string") {
   qtdCartas = parseInt(prompt("Quantas cartas você deseja? (numeros pares de 4 a 14)"));
@@ -32,7 +35,7 @@ function adicionarCartas() {
       <div class="back face"></div>
     </div>`
   }
-  console.log(cartasEmJogo);
+
 }
 
 function comparador() { 
@@ -41,12 +44,32 @@ function comparador() {
 
 function virarCarta(cartaClicada){
   cartaClicada.classList.add("front");
-  setTimeout(desvirarCarta,5000);
+  let primeiroVerso;
+  let segundoVerso;
+  if(jogadas % 2 !== 0){
+    segundaCartaVirada = cartaClicada;
+    primeiroVerso = primeiraCartaVirada.querySelector(".img-card").src;
+    segundoVerso = segundaCartaVirada.querySelector(".img-card").src;
+    if (primeiroVerso !== segundoVerso){
+      setTimeout(desvirarCarta,1000);
+    }
+    else{
+      cartasViradas += 2;
+      setTimeout(resultadoFinal,1000);
+     
+    }
+    jogadas++;
+  }
+  else{
+    primeiraCartaVirada= cartaClicada;
+    jogadas++; 
+  }
 }
 
-function desvirarCarta(cartaClicada){
-    cartaClicada.classList.remove("front");
-   
+function desvirarCarta(){
+  primeiraCartaVirada.classList.remove("front");
+  segundaCartaVirada.classList.remove("front");
+    
 }
 
 function aumentarContagem() {
@@ -58,13 +81,12 @@ function aumentarContagem() {
 }
 
 intervalo = setInterval(aumentarContagem, 1000);
-console.log(intervalo);
+
+function resultadoFinal(){
+  if(cartasViradas === qtdCartas){
+    alert(`Parabéns você ganhou em ${jogadas} jogadas!` )
+  }
+}
 
 adicionarCartas();
-// tenho que clicar em uma carta - gerenciar jogadas (variavel) 
-// compara as cartas - controlar se estou virando a primeira ou a segunda
-// 1 segundo desvira setimeout
 
-// controlar jogadas através da carta que foi virada
-// no caso de cartas iguais elas continuam para cima 
-// dicaaaaaaaaaaaa: cartaClicada.queryselector  
