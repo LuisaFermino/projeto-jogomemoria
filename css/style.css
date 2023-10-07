@@ -63,7 +63,6 @@ h1 {
   background-size: 10vw 20vh;
 }
 
-
 .back{
   background-image: url('../img/front.png');
   backface-visibility: hidden;
@@ -72,4 +71,20 @@ h1 {
 .front{
   transform: rotateY(180deg);
   align-items: center;
+}
+
+.relogio {
+  width: 100px;
+  height: 100px;
+  font-weight: 700;
+  font-family: "Roboto";
+  display: flex;
+  font-size: 30px;
+  color: red;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: fixed;
+  right: 5vw;
+  top: 3vh;
 }

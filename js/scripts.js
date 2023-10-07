@@ -9,6 +9,9 @@ const versosCarta = [
   `bobrossparrot`
 ]
 const cartasEmJogo = []
+const relogio = document.querySelector(".relogio");
+let intervalo = null;
+
 
 while (qtdCartas < 4 || qtdCartas > 14 || qtdCartas % 2 !== 0 || typeof(qtdCartas)  === "string") {
   qtdCartas = parseInt(prompt("Quantas cartas você deseja? (numeros pares de 4 a 14)"));
@@ -38,11 +41,26 @@ function comparador() {
 
 function virarCarta(cartaClicada){
   cartaClicada.classList.add("front");
-
+  setTimeout(desvirarCarta,5000);
 }
-  
-adicionarCartas();
 
+function desvirarCarta(cartaClicada){
+    cartaClicada.classList.remove("front");
+   
+}
+
+function aumentarContagem() {
+  if(parseInt(relogio.innerHTML) === 100) {
+    clearInterval(intervalo);
+  } else {
+    relogio.innerHTML = parseInt(relogio.innerHTML) + 1; 
+  }
+}
+
+intervalo = setInterval(aumentarContagem, 1000);
+console.log(intervalo);
+
+adicionarCartas();
 // tenho que clicar em uma carta - gerenciar jogadas (variavel) 
 // compara as cartas - controlar se estou virando a primeira ou a segunda
 // 1 segundo desvira setimeout
