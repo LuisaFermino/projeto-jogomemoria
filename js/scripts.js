@@ -49,4 +49,4 @@ adicionarCartas();
 
 // controlar jogadas através da carta que foi virada
 // no caso de cartas iguais elas continuam para cima 
-// dicaaaaaaaaaaaa: cartaClicada.queryselector
+// dicaaaaaaaaaaaa: cartaClicada.queryselector  
