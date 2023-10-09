@@ -17,6 +17,7 @@ while (qtdCartas < 4 || qtdCartas > 14 || qtdCartas % 2 !== 0 || typeof(qtdCarta
   qtdCartas = parseInt(prompt("Quantas cartas você deseja? (numeros pares de 4 a 14)"));
 }
 
+//funcao para adicionar cartas
 function adicionarCartas() {
   const cards = document.querySelector(".container-cards");
   for(let i = 0; i < qtdCartas/2; i++){
@@ -24,6 +25,7 @@ function adicionarCartas() {
     cartasEmJogo.push(versosCarta[i]);
   }
 
+  //funcao 
   cartasEmJogo.sort(comparador);
 
   for (let i = 0; i < cartasEmJogo.length; i++){
@@ -39,6 +41,7 @@ function comparador() {
 	return Math.random() - 0.5; 
 }
 
+//funcao para virar carta
 function virarCarta(cartaClicada){
   cartaClicada.classList.add("front");
   setTimeout(desvirarCarta,5000);
@@ -49,6 +52,7 @@ function desvirarCarta(cartaClicada){
    
 }
 
+//funcao para contagem do relogio
 function aumentarContagem() {
   if(parseInt(relogio.innerHTML) === 100) {
     clearInterval(intervalo);
