@@ -15,6 +15,7 @@ let primeiraCartaVirada;
 let segundaCartaVirada;
 let jogadas = 0;
 let cartasViradas = 0;
+let jogarNovamente;
 
 while (qtdCartas < 4 || qtdCartas > 14 || qtdCartas % 2 !== 0 || typeof(qtdCartas)  === "string") {
   qtdCartas = parseInt(prompt("Quantas cartas você deseja? (numeros pares de 4 a 14)"));
@@ -59,11 +60,8 @@ function virarCarta(cartaClicada){
       setTimeout(desvirarCarta,500);
     }
     else{
-
       cartasViradas += 2;
       setTimeout(resultadoFinal,1000);
-
-     
     }
     jogadas++;
   }
@@ -90,8 +88,11 @@ function resultadoFinal(){
   if(cartasViradas === qtdCartas){
     alert(`Parabéns você ganhou em ${jogadas} jogadas! Seu tempo foi: ${relogio.innerHTML}s` );
     clearInterval(timer);
+    // let jogarNovamente = prompt (`Deseja jogar novamente? Sim ou Não`);
+
   }
+  
 }
 
-adicionarCartas();
+adicionarCartas();  
 

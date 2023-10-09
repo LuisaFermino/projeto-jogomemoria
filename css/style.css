@@ -22,8 +22,10 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 .container-cards {
+  flex-wrap: wrap;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -49,8 +51,8 @@ h1 {
   transition: all 400ms ease;
   transform-style: preserve-3d;
   transition: all 400ms ease;
-  transform-style: preserve-3d;
   margin-left: 5vh;
+
 }
 
 .face{
