@@ -10,7 +10,7 @@ const versosCarta = [
 ]
 const cartasEmJogo = []
 const relogio = document.querySelector(".relogio");
-let intervalo = null;
+let timer = null;
 let primeiraCartaVirada;
 let segundaCartaVirada;
 let jogadas = 0;
@@ -49,16 +49,20 @@ function virarCarta(cartaClicada){
   cartaClicada.classList.add("front");
   let primeiroVerso;
   let segundoVerso;
+
   if(jogadas % 2 !== 0){
     segundaCartaVirada = cartaClicada;
     primeiroVerso = primeiraCartaVirada.querySelector(".img-card").src;
     segundoVerso = segundaCartaVirada.querySelector(".img-card").src;
     if (primeiroVerso !== segundoVerso){
-      setTimeout(desvirarCarta,1000);
+      
+      setTimeout(desvirarCarta,500);
     }
     else{
+
       cartasViradas += 2;
       setTimeout(resultadoFinal,1000);
+
      
     }
     jogadas++;
@@ -77,18 +81,15 @@ function desvirarCarta(){
 
 //funcao para contagem do relogio
 function aumentarContagem() {
-  if(parseInt(relogio.innerHTML) === 100) {
-    clearInterval(intervalo);
-  } else {
     relogio.innerHTML = parseInt(relogio.innerHTML) + 1; 
-  }
 }
 
-intervalo = setInterval(aumentarContagem, 1000);
+timer = setInterval(aumentarContagem, 1000);
 
 function resultadoFinal(){
   if(cartasViradas === qtdCartas){
-    alert(`Parabéns você ganhou em ${jogadas} jogadas!` )
+    alert(`Parabéns você ganhou em ${jogadas} jogadas! Seu tempo foi: ${relogio.innerHTML}s` );
+    clearInterval(timer);
   }
 }
 
